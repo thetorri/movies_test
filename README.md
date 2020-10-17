@@ -1,6 +1,9 @@
 **Prueba de Laravel para PadelManager**
 
-Para levatar el proyecto, desde el directorio movies_test:
+En src:
+- composer install
+
+Para levantar docker, desde el directorio movies_test:
 - docker-compose up --build -d
 - docker exec -it apache bash
 - php artisan migrate
