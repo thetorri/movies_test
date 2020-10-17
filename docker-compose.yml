@@ -1,0 +1,32 @@
+version: "3"
+
+services:
+    mysql:
+        image: mysql:5.7
+        container_name: mysql
+        restart: unless-stopped
+        environment:
+            MYSQL_ROOT_PASSWORD: x
+            MYSQL_DATABASE: movies
+            MYSQL_USER: movies
+            MYSQL_PASSWORD: x
+        ports:
+            - "33061:3306"
+    apache:
+        build:
+            context: ./
+        container_name: apache
+        links:
+            - mysql:mysql
+        depends_on:
+            - mysql
+        volumes:
+            - ./src:/var/www/html
+            - ./000-default.conf:/etc/apache2/sites-enabled/000-default.conf
+        ports:
+            - "80:80"
+    redis:
+        container_name: redis
+        image: redis:4.0
+        ports:
+            - "6382:6379"
