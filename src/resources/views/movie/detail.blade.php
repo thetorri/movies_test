@@ -18,6 +18,11 @@
                     </div>
                     <div class="col-xs-8">
                         <div class="row">
+                            <div class="col-xs-12">
+                                <a type="button" href="{{ route('user.rate.add', ['movieId' => $movie->getId()]) }}" class="btn btn-warning pull-right">Add to my top</a>
+                            </div>
+                        </div>
+                        <div class="row">
                             <h3>{{ $movie->getTitle() }}</h3>
                             <dl>
                                 <dt>Release Date</dt>
